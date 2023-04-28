@@ -1,1 +1,1 @@
-i dont know why im making anything graphical in python send help i am mentally unwell
+yes im making a game with visual elements in python no i am not mentally ill
