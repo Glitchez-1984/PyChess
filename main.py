@@ -14,6 +14,12 @@ board = Board(BOARD_WIDTH, BOARD_HEIGHT, (WIDTH - BOARD_WIDTH) // 2, (HEIGHT - B
 board.create_board()
 
 
+# draw graphics
+def draw_graphics(screen):
+    screen.fill(BG)
+    board.draw_board(screen)
+
+
 # main game loop
 def main():
     clock = pygame.time.Clock()
@@ -22,7 +28,11 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        board.draw_board(win)
+        draw_graphics(win)
         clock.tick(FPS)
         pygame.display.update()
     pygame.quit()
+
+
+if __name__ == '__main__':
+    main()

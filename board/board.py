@@ -1,23 +1,23 @@
 import pygame
 from controls import *
 import numpy as np
-from square import Square
+from board.square import Square
 from object import Object
+from controls import *
 
 
 class Board(Object):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.width = BOARD_WIDTH
-        self.height = BOARD_HEIGHT
+    def __init__(self, width, height, x, y):
+        super().__init__(width, height, x, y)
         self.squares = np.zeros((ROW_LENGTH, ROW_LENGTH), dtype=object)
 
     def create_board(self):
         for row in range(ROW_LENGTH):
             for column in range(ROW_LENGTH):
                 square_color = LIGHT_SQUARE if (row + column) % 2 == 0 else DARK_SQUARE
-                self.squares[row, column] = Square(square_color, column * self.width, row * self.height)
+                side = BOARD_WIDTH // ROW_LENGTH
+                self.squares[row, column] = Square(square_color, column * side, row * side, side, side)
 
     def draw_board(self, win):
-        for square in np.nditer(self.squares):
+        for square in self.squares.flat:
             square.draw(win)
