@@ -6,8 +6,6 @@ from controls import *
 class Square(Object):
     def __init__(self, color, x, y, width, height):
         super().__init__(width, height, x, y)
-        self.x = x
-        self.y = y
         self.color = color
         self.width = BOARD_WIDTH // ROW_LENGTH
         self.height = self.width

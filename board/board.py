@@ -15,8 +15,7 @@ class Board(Object):
         for row in range(ROW_LENGTH):
             for column in range(ROW_LENGTH):
                 square_color = LIGHT_SQUARE if (row + column) % 2 == 0 else DARK_SQUARE
-                side = BOARD_WIDTH // ROW_LENGTH
-                self.squares[row, column] = Square(square_color, column * side, row * side, side, side)
+                self.squares[row, column] = Square(square_color, column * SIDE, row * SIDE, SIDE, SIDE)
 
     def draw_board(self, win):
         for square in self.squares.flat:
