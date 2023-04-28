@@ -9,7 +9,7 @@ class Square(Object):
         self.color = color
         self.width = BOARD_WIDTH // ROW_LENGTH
         self.height = self.width
-        self.square_object = pygame.Rect(self.x + SQUARE_SHIFT, self.y + SQUARE_SHIFT, self.width, self.height)
+        self.square_object = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def draw(self, win):
         pygame.draw.rect(win, self.color, self.square_object)

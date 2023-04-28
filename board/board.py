@@ -10,6 +10,7 @@ class Board(Object):
     def __init__(self, width, height, x, y):
         super().__init__(width, height, x, y)
         self.squares = np.zeros((ROW_LENGTH, ROW_LENGTH), dtype=object)
+        self.board = pygame.Surface((BOARD_WIDTH, BOARD_HEIGHT))
 
     def create_board(self):
         for row in range(ROW_LENGTH):
@@ -18,5 +19,7 @@ class Board(Object):
                 self.squares[row, column] = Square(square_color, column * SIDE, row * SIDE, SIDE, SIDE)
 
     def draw_board(self, win):
+        win.blit(self.board, (self.x, self.y))
         for square in self.squares.flat:
-            square.draw(win)
+            square_surface = self.board.subsurface(square.square_object)
+            square_surface.fill(square.color)
