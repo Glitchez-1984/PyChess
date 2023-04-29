@@ -4,7 +4,7 @@ import numpy as np
 from board.square import Square
 from object import Object
 from controls import *
-
+from text import render_text
 
 class Board(Object):
     def __init__(self, width, height, x, y):
@@ -20,6 +20,10 @@ class Board(Object):
 
     def draw_board(self, win):
         win.blit(self.board, (self.x, self.y))
+        nums = ['8','7','6','5','4','3','2','1']
         for square in self.squares.flat:
             square_surface = self.board.subsurface(square.square_object)
             square_surface.fill(square.color)
+            pos = np.where(self.squares == square)
+            if pos[1] == 0:
+                render_text(square_surface, str(pos[0])[1],"arial",24,True,255,0,0,(255,0,0))
