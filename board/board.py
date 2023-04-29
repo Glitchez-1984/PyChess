@@ -20,10 +20,11 @@ class Board(Object):
 
     def draw_board(self, win):
         win.blit(self.board, (self.x, self.y))
-        nums = ['8','7','6','5','4','3','2','1']
         for square in self.squares.flat:
             square_surface = self.board.subsurface(square.square_object)
             square_surface.fill(square.color)
             pos = np.where(self.squares == square)
             if pos[1] == 0:
-                render_text(square_surface, str(pos[0])[1],"arial",24,True,255,0,0,(255,0,0))
+                render_text(square_surface, str(ROW_LENGTH - pos[0])[1],"Segoe UI Semibold",18,True,255,5,5,LIGHT_SQUARE if square.color == DARK_SQUARE else DARK_SQUARE, False)
+            if pos[0] ==  ROW_LENGTH-1:
+                render_text(square_surface, chr(int(str(pos[1])[1])+97), "Segoe UI Semibold", 18, True, 255, BOARD_WIDTH//ROW_LENGTH - 5, BOARD_HEIGHT//ROW_LENGTH -5,LIGHT_SQUARE if square.color == DARK_SQUARE else DARK_SQUARE, True)
