@@ -9,3 +9,4 @@ class Piece(object):
         self.image = pygame.transform.smoothscale(pygame.image.load(img_path), (SIDE, SIDE))
     def draw(self, win):
         win.blit(self.image,(0,0))
+"s"

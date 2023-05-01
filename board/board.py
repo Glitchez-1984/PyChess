@@ -41,3 +41,4 @@ class Board(Object):
                 render_text(square_surface, str(ROW_LENGTH - pos[0])[1],"Segoe UI Semibold",18,True,255,5,5,LIGHT_SQUARE if square.color == DARK_SQUARE else DARK_SQUARE, False)
             if pos[0] ==  ROW_LENGTH-1:
                 render_text(square_surface, chr(int(str(pos[1])[1])+97), "Segoe UI Semibold", 18, True, 255, BOARD_WIDTH//ROW_LENGTH - 5, BOARD_HEIGHT//ROW_LENGTH -5,LIGHT_SQUARE if square.color == DARK_SQUARE else DARK_SQUARE, True)
+"s"
